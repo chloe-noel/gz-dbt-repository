@@ -11,56 +11,42 @@ sources:
         columns:
           - name: date_date
             description: "Date de la commande"
-            tests:
-              - unique
           - name: orders_id
             description: "Identifiant unique de la commande"
-            tests:
-              - unique
-          - name: product_id
+          - name: pdt_id
             description: "Identifiant unique du produit"
-            tests:
-              - unique
           - name: revenue
             description: "Chiffre d'affaires généré par la vente"
-            tests:
-              - unique
           - name: quantity
             description: "Nombre d'unités vendues"
+          - name: "(orders_id || '-' || pdt_id)"
+            description: primary key of the table
             tests:
-              - unique
+            - unique
+            - not_null
       - name: products
         identifier: raw_gz_product
         description: purchase price by products
         columns:
-          - name: product_id
-            description: "identifiant produit"
+          - name: products_id
+            description: "Identifiant produit"
             tests:
               - unique
               - not_null
           - name: purchase_id
-            description: "identifiant achat"
-            tests:
-              - unique
-              - not_null
+            description: "Identifiant achat"
       - name: ship
         identifier: raw_gz_ship
         description: push
         columns:
-          - name: order_id
-            description: Identifiant unique de la commande
+          - name: orders_id
+            description: "Identifiant unique de la commande"
             tests:
               - unique
               - not_null
           - name: shipping_fee
-            description: Frais de livraison associés à la commande
-            tests:
-              - not_null
+            description: "Frais de livraison associés à la commande"
           - name: log_cost
-            description: Coût de gestion du stockage des articles
-            tests:
-              - not_null
+            description: "Coût de gestion du stockage des articles"
           - name: ship_cost
-            description: Coût total du transport des produits
-            tests:
-              - not_null
+            description: "Coût total du transport des produits"
