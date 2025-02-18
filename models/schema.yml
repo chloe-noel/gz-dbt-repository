@@ -50,3 +50,10 @@ sources:
             description: "Coût de gestion du stockage des articles"
           - name: ship_cost
             description: "Coût total du transport des produits"
+models:
+  - name: int_sales_margin
+    description: "Table intermédiaire pour calcul de la marge par vente"
+  - name: int_orders_margin
+    description: "Table intermédiaire pour le calcul de la marge opérationnelle"
+  - name: finance_days.sql
+    description: granularité quotidienne
