@@ -50,6 +50,130 @@ sources:
             description: "Coût de gestion du stockage des articles"
           - name: ship_cost
             description: "Coût total du transport des produits"
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: table adwords gz
+        columns:
+          - name: date_date
+            description: "Date de la campagne publicitaire"
+
+          - name: paid_source
+            description: "Source payante de la campagne"
+
+          - name: campaign_key
+            description: "Identifiant unique de la campagne"
+
+          - name: campgn_name
+            description: "Nom de la campagne publicitaire"
+
+          - name: adds_cost
+            description: "Coût total des annonces"
+
+          - name: impression
+            description: "Nombre d'impressions générées"
+
+          - name: click
+            description: "Nombre de clics générés"
+          
+          - name: "(date_date || '-' || campaign_key)"
+            description: primary key of the table
+            tests:
+              - unique
+              - not_null
+
+      - name: bing
+        identifier: raw_gz_bing
+        description: table bing gz
+        columns:
+          - name: date_date
+            description: "Date de la campagne publicitaire"
+
+          - name: paid_source
+            description: "Source payante de la campagne"
+
+          - name: campaign_key
+            description: "Identifiant unique de la campagne"
+
+          - name: camPGN_name
+            description: "Nom de la campagne publicitaire"
+
+          - name: adds_cost
+            description: "Coût total des annonces"
+
+          - name: impression
+            description: "Nombre d'impressions générées"
+
+          - name: click
+            description: "Nombre de clics générés"
+
+          - name: "(date_date || '-' || campaign_key)"
+            description: primary key of the table
+            tests:
+              - unique
+              - not_null
+
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: table criteo gz
+
+        columns:
+          - name: date_date
+            description: "Date de la campagne publicitaire"
+
+          - name: paid_source
+            description: "Source payante de la campagne"
+
+          - name: campaign_key
+            description: "Identifiant unique de la campagne"
+
+          - name: camPGN_name
+            description: "Nom de la campagne publicitaire"
+
+          - name: adds_cost
+            description: "Coût total des annonces"
+
+          - name: impression
+            description: "Nombre d'impressions générées"
+
+          - name: click
+            description: "Nombre de clics générés"
+
+          - name: "(date_date || '-' || campaign_key)"
+            description: primary key of the table
+            tests:
+              - unique
+              - not_null
+
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: table facebook gz
+
+        columns:
+          - name: date_date
+            description: "Date de la campagne publicitaire"
+
+          - name: paid_source
+            description: "Source payante de la campagne"
+
+          - name: campaign_key
+            description: "Identifiant unique de la campagne"
+
+          - name: camPGN_name
+            description: "Nom de la campagne publicitaire"
+
+          - name: adds_cost
+            description: "Coût total des annonces"
+
+          - name: impression
+            description: "Nombre d'impressions générées"
+
+          - name: click
+            description: "Nombre de clics générés"
+          - name: "(date_date || '-' || campaign_key)"
+            description: primary key of the table
+            tests:
+              - unique
+              - not_null
 models:
   - name: int_sales_margin
     description: "Table intermédiaire pour calcul de la marge par vente"
@@ -59,3 +183,9 @@ models:
     description: "Table intermédiaire pour le calcul de la marge opérationnelle"
   - name: finance_days
     description: granularité quotidienne
+  - name: int_campaigns
+    description: "Table de campagne"
+  - name: int_campaigns_day2
+    description: "table de campagne par jour"
+  - name: finance_campaigns_days
+    description: "joint campagne et finance"
