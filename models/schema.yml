@@ -22,8 +22,8 @@ sources:
           - name: "(orders_id || '-' || pdt_id)"
             description: primary key of the table
             tests:
-            - unique
-            - not_null
+              - unique
+              - not_null
       - name: products
         identifier: raw_gz_product
         description: purchase price by products
@@ -53,7 +53,8 @@ sources:
 models:
   - name: int_sales_margin
     description: "Table intermédiaire pour calcul de la marge par vente"
-  - name: int_orders_margin
+  - name: int_order_margin
     description: "Table intermédiaire pour le calcul de la marge opérationnelle"
-  - name: finance_days.sql
+  - name: finance_days
     description: granularité quotidienne
+    +materialized: table
