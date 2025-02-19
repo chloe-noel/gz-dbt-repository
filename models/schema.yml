@@ -1,0 +1,61 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: gz_raw
+    description: gz raw data sources
+    tables:
+      - name: sales
+        identifier: raw_gz_sales
+        description: sales of Greenweez
+        columns:
+          - name: date_date
+            description: "Date de la commande"
+          - name: orders_id
+            description: "Identifiant unique de la commande"
+          - name: pdt_id
+            description: "Identifiant unique du produit"
+          - name: revenue
+            description: "Chiffre d'affaires généré par la vente"
+          - name: quantity
+            description: "Nombre d'unités vendues"
+          - name: "(orders_id || '-' || pdt_id)"
+            description: primary key of the table
+            tests:
+              - unique
+              - not_null
+      - name: products
+        identifier: raw_gz_product
+        description: purchase price by products
+        columns:
+          - name: products_id
+            description: "Identifiant produit"
+            tests:
+              - unique
+              - not_null
+          - name: purchase_id
+            description: "Identifiant achat"
+      - name: ship
+        identifier: raw_gz_ship
+        description: push
+        columns:
+          - name: orders_id
+            description: "Identifiant unique de la commande"
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+            description: "Frais de livraison associés à la commande"
+          - name: log_cost
+            description: "Coût de gestion du stockage des articles"
+          - name: ship_cost
+            description: "Coût total du transport des produits"
+models:
+  - name: int_sales_margin
+    description: "Table intermédiaire pour calcul de la marge par vente"
+  - name: int_order_margin
+    description: "Table intermédiaire pour le calcul de la marge opérationnelle"
+  - name: int_orders_operational
+    description: "Table intermédiaire pour le calcul de la marge opérationnelle"
+  - name: finance_days
+    description: granularité quotidienne
