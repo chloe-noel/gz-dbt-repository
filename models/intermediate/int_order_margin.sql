@@ -1,3 +1,4 @@
+ {{ config(materialized='table') }}
  SELECT
      orders_id,
      date_date,
