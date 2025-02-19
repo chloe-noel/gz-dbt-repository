@@ -1,4 +1,4 @@
-  SELECT
+ SELECT
       product_id,
       date_date,
       orders_id,

@@ -55,6 +55,7 @@ models:
     description: "Table intermédiaire pour calcul de la marge par vente"
   - name: int_order_margin
     description: "Table intermédiaire pour le calcul de la marge opérationnelle"
+  - name: int_orders_operational
+    description: "Table intermédiaire pour le calcul de la marge opérationnelle"
   - name: finance_days
     description: granularité quotidienne
-    +materialized: table
